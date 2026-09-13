@@ -9,5 +9,6 @@ describe('cypress test ',() =>{
 
     it('Login adm Lucid', () => {
         cy.Login("test2@admluicd.com", "Test@1234")
+        
     })
 });
