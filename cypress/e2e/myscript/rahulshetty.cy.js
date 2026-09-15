@@ -84,4 +84,18 @@ describe('Rahul Shetty Course',()=>{
             cy.url().should('include','rahulshettyacademy.com');
         }) 
     
+        it ('Web Table example',()=>{   
+            cy.visit('https://rahulshettyacademy.com/AutomationPractice/');
+            cy.get('tr td:nth-child(2)').each(($el,index,$list)=>{
+                if($el.text().includes('Python'))
+                {
+                    cy.get('tr td:nth-child(2)').eq(index).next().then((price)=>{
+                        const priceText = price.text();
+                        expect(priceText).to.equal('25');
+                    })
+                }
+            })
+        })
+
+        
 })
