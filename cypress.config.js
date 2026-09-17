@@ -1,5 +1,12 @@
 const { defineConfig } = require("cypress");
 
+const {
+    saveGetResponseToExcel, 
+    postResponseToExcel,
+    putResponseToExcel,
+    deleteResponseToExcel
+} = require('./cypress/utils/excelUtils');
+
 module.exports = defineConfig({
   allowCypressEnv: false,
 
@@ -9,6 +16,14 @@ module.exports = defineConfig({
     chromeWebSecurity: false,
     setupNodeEvents(on, config) {
       // implement node event listeners here
+       on('task', {
+          saveGetResponseToExcel,
+          postResponseToExcel,
+          putResponseToExcel,
+          deleteResponseToExcel      
+              });
+
+            return config;
     },
   },
 });
